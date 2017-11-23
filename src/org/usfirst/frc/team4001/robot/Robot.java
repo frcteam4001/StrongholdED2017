@@ -9,7 +9,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4001.robot.commands.ExampleCommand;
+import org.usfirst.frc.team4001.robot.commands.IntakeCommand;
 import org.usfirst.frc.team4001.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team4001.robot.subsystems.Intake;
+import org.usfirst.frc.team4001.robot.subsystems.Shooter;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -22,6 +25,8 @@ public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
+	public static Intake intake;
+	public static Shooter shooter;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -36,6 +41,9 @@ public class Robot extends IterativeRobot {
 		chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
+		intake = new Intake();
+		shooter = new Shooter();
+		SmartDashboard.putData("Intake", new IntakeCommand());
 	}
 
 	/**
